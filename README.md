@@ -1,7 +1,10 @@
 # build-singularity-rpms-in-singularity
 
-## define the singularity version to build
-Edit [singularity_rpms.def](https://github.com/pescobar/build-singularity-rpms-in-singularity/blob/master/singularity_rpms.def#L15) to define which singularity version to build. You can find the complete list in the [singularity repository](https://github.com/sylabs/singularity/releases)
+## singularity version
+
+By default the script queries the [singularity releases page](https://github.com/sylabs/singularity/releases) to build the latest version.
+
+If you want to build an older version edit [singularity_rpms.def](https://github.com/pescobar/build-singularity-rpms-in-singularity/blob/master/singularity_rpms.def#L17) to define which singularity version to build. e.g. `export SINGULARITY_VERSION="v3.1.1"`
 
 ## build in a linux machine with Singularity already installed and root/sudo permissions
 
