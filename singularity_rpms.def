@@ -12,7 +12,9 @@ From: centos:7
     # When the build finishes you will get the rpms in /tmp/rpmbuild
 
     # check the versions in https://github.com/sylabs/singularity/releases
-    export SINGULARITY_VERSION="3.2.1"
+    #export SINGULARITY_VERSION="3.2.1"
+    # get the latest singularity version
+    SINGULARITY_VERSION=$(curl -s https://api.github.com/repos/sylabs/singularity/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')
 
     # bring up to date
     yum -y update
