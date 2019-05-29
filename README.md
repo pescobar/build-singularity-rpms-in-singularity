@@ -3,6 +3,8 @@
 If you have a linux machine with [Singularity](https://www.sylabs.io/) and root/sudo access just run this command:
 
 ```
+$> git clone https://github.com/pescobar/build-singularity-rpms-in-singularity.git
+$> cd build-singularity-rpms-in-singularity
 $> sudo singularity build /tmp/singularity_rpms.simg singularity_rpms.def
 ```
 
