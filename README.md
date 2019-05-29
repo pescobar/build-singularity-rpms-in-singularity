@@ -25,13 +25,9 @@ $> cd centos7_vm
 $> vagrant init bento/centos-7
 $> vagrant up
 $> vagrant ssh
-vagrant$> sudo yum -y install git
-vagrant$> sudo yum -y install epel-release
-vagrant$> sudo yum -y install singularity
 vagrant$> git clone https://github.com/pescobar/build-singularity-rpms-in-singularity.git
 vagrant$> cd build-singularity-rpms-in-singularity
-vagrant$> sudo singularity build /tmp/singularity_rpms.simg singularity_rpms.def
-vagrant$> cp -r /tmp/rpmbuild /vagrant
+vagrant$> ./build_singularity_rpms.sh
 ```
 
 ## use the provided Vagrantfile to do a fully automated build
