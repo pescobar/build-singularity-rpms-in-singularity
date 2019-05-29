@@ -36,7 +36,7 @@ From: centos:7
     go get -v -u github.com/golang/dep/cmd/dep
 
     # build rpms
-    wget https://github.com/sylabs/singularity/releases/download/v${SINGULARITY_VERSION}/singularity-${SINGULARITY_VERSION}.tar.gz
+    wget https://github.com/sylabs/singularity/archive/${SINGULARITY_VERSION}.tar.gz
     export build_log_name="singularity-${SINGULARITY_VERSION}.build.`date --iso-8601=minutes| sed 's/:/h/g'`.log"
     rpmbuild -tb singularity-${SINGULARITY_VERSION}.tar.gz 2>&1 | tee $build_log_name
     rpm -qa --queryformat='%{name}.%{arch}\n' | sort|uniq |  grep -v ^gpg-pubkey  > installed-rpms.log
