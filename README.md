@@ -22,7 +22,7 @@ If you don't have Singularity you can build the rpms in a Vagrant VM like this:
 ```
 $> mkdir centos7_vm
 $> cd centos7_vm
-$> vagrant init centos/7
+$> vagrant init bento/centos-7
 $> vagrant up
 $> vagrant ssh
 vagrant$> sudo yum -y install git
