@@ -41,6 +41,7 @@ $> git clone https://github.com/pescobar/build-singularity-rpms-in-singularity.g
 $> cd build-singularity-rpms-in-singularity
 $> vagrant up
 $> ls ./rpmbuild/
+$> vagrant destroy
 ```
 
 
