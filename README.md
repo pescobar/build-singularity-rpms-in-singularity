@@ -6,6 +6,8 @@ If you have a linux machine with [Singularity](https://www.sylabs.io/) and root/
 $> sudo singularity build /tmp/singularity_rpms.simg singularity_rpms.def
 ```
 
+You will get the rpms and build logs in `/tmp/rpmbuild`
+
 If you don't have Singularity you can build the rpms in a Vagrant VM like this:
 
 ```
@@ -27,5 +29,3 @@ You can re-use the container with:
 ```
 singularity exec -B `pwd` /tmp/singularity_rpms.simg rpmbuild -tb singularity-${VERSION}.tar.bz2
 ```
-
-You will get the rpms and build logs in `/tmp/rpmbuild`
