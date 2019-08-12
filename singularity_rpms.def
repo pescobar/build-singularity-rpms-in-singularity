@@ -17,9 +17,9 @@ From: centos:7
     SINGULARITY_VERSION=$(curl -s https://api.github.com/repos/sylabs/singularity/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")' | cut -d "v" -f 2)
 
     # bring up to date and install deps
-    sudo yum update -y && \
-    sudo yum groupinstall -y 'Development Tools' && \
-    sudo yum install -y \
+    yum update -y && \
+    yum groupinstall -y 'Development Tools' && \
+    yum install -y \
     openssl-devel \
     libuuid-devel \
     libseccomp-devel \
@@ -29,7 +29,7 @@ From: centos:7
     # install golang
     export VERSION=1.12 OS=linux ARCH=amd64 && \
     wget https://dl.google.com/go/go$VERSION.$OS-$ARCH.tar.gz && \
-    sudo tar -C /usr/local -xzvf go$VERSION.$OS-$ARCH.tar.gz && \
+    tar -C /usr/local -xzvf go$VERSION.$OS-$ARCH.tar.gz && \
     rm go$VERSION.$OS-$ARCH.tar.gz
 
     # set up your environment for Go
@@ -41,7 +41,7 @@ From: centos:7
     wget https://github.com/sylabs/singularity/releases/download/v${VERSION}/singularity-${VERSION}.tar.gz 
     export build_log_name="singularity-${SINGULARITY_VERSION}.build.`date --iso-8601=minutes| sed 's/:/h/g'`.log"
     rpmbuild -tb --nodeps singularity-${VERSION}.tar.gz 2>&1 | tee $build_log_name
-    sudo rpm -ivh ~/rpmbuild/RPMS/x86_64/singularity-$VERSION-1.el7.x86_64.rpm && \
+    rpm -ivh ~/rpmbuild/RPMS/x86_64/singularity-$VERSION-1.el7.x86_64.rpm && \
     rm -rf ~/rpmbuild singularity-$VERSION*.tar.gz
     rpm -qa --queryformat='%{name}.%{arch}\n' | sort|uniq |  grep -v ^gpg-pubkey  > installed-rpms.log
 
