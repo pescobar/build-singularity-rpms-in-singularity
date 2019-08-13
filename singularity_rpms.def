@@ -12,7 +12,8 @@ From: centos:7
     # When the build finishes you will get the rpms in /tmp/rpmbuild
 
     # check the versions in https://github.com/sylabs/singularity/releases
-    #export SINGULARITY_VERSION="v3.2.1"
+    #export SINGULARITY_VERSION="3.3.0"
+
     # get the latest singularity version
     SINGULARITY_VERSION=$(curl -s https://api.github.com/repos/sylabs/singularity/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")' | cut -d "v" -f 2)
 
@@ -33,9 +34,11 @@ From: centos:7
     rm go$VERSION.$OS-$ARCH.tar.gz
 
     # set up your environment for Go
+    HOME="/root"
+    GOPATH="${HOME}/go"
+    PATH="/usr/local/go/bin:/usr/local/sbin:/sbin:/bin:/usr/sbin:/usr/bin:${HOME}/go/bin:${HOME}/bin"
     echo 'export GOPATH=${HOME}/go' >> ~/.bashrc && \
     echo 'export PATH=/usr/local/go/bin:${PATH}:${GOPATH}/bin' >> ~/.bashrc && \
-    source ~/.bashrc
 
     # build rpms
     wget https://github.com/sylabs/singularity/releases/download/v${SINGULARITY_VERSION}/singularity-${SINGULARITY_VERSION}.tar.gz 
