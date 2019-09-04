@@ -25,7 +25,8 @@ From: centos:7
     libuuid-devel \
     libseccomp-devel \
     wget \
-    squashfs-tools
+    squashfs-tools \
+    cryptsetup
 
     # install golang
     export VERSION=1.12 OS=linux ARCH=amd64 && \
